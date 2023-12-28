@@ -27,20 +27,3 @@ def recognize_speech():
     except sr.RequestError as e:
         print(f"Could not request results from Google Speech Recognition service; {e}")
         return ""
-
-def main():
-    nlp = spacy.load("en_core_web_sm")
-
-    while True:
-        user_input = recognize_speech()
-        doc = nlp(user_input)
-        if "good morning" in user_input:
-            response = "Good morning, Ardan."
-            print("AI:", response)
-            speak(response)
-        if "can i" in user_input:
-            speak("sure, ahhhh, ahhhh, ahhhh your penis is so delicious ardan")
-        if "suck my dick" in user_input:
-            speak("blup, blup, blup, ahh, ahh, ahh, are,   you, satisfied, ardan?")
-if __name__ == "__main__":
-    main()
