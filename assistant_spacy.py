@@ -2,22 +2,11 @@ import spacy
 import speech_recognition as sr
 import pyttsx3
 def speak(text):
-    # Initialize the text-to-speech engine
     engine = pyttsx3.init()
-
-    # Get the list of available voices
     voices = engine.getProperty('voices')
-
-    # Set the voice ID for Microsoft Zira Desktop
     zira_voice_id = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0"
-
-    # Set the voice
     engine.setProperty('voice', zira_voice_id)
-
-    # Say the text
     engine.say(text)
-
-    # Wait for the speech to finish
     engine.runAndWait()
 
 def recognize_speech():
@@ -40,17 +29,11 @@ def recognize_speech():
         return ""
 
 def main():
-    # Load the English language model from SpaCy
     nlp = spacy.load("en_core_web_sm")
 
     while True:
-        # Recognize speech command
         user_input = recognize_speech()
-
-        # Process the recognized command using SpaCy
         doc = nlp(user_input)
-
-        # Respond to the command
         if "good morning" in user_input:
             response = "Good morning, Ardan."
             print("AI:", response)
